@@ -6,7 +6,8 @@ namespace ExemploHerancaVeiculo
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.Write("Entre com o nome do veículo: ");
+            string nome = Console.ReadLine();
         }
     }
 }
