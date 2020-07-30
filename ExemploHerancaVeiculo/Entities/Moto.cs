@@ -1,4 +1,5 @@
-﻿namespace ExemploHerancaVeiculo.Entities
+﻿using ExemploHerancaVeiculo.Entities.Exceptions;
+namespace ExemploHerancaVeiculo.Entities
 {
     class Moto : Veiculo
     {
@@ -35,9 +36,13 @@
             {
                 _vlPreco = Preco + (Preco * 0.2);
             }
-            else
+            else if (Preco >= 10000 && Importado == 'S')
             {
                 _vlPreco = Preco + (Preco * 0.3);
+            }
+            else
+            {
+                throw new DomainException("Não existe este tipo de importado.");
             }
             return _vlPreco;
         }
@@ -64,9 +69,13 @@
             {
                 _vlImposto = Preco * 0.2;
             }
-            else
+            else if (Preco >= 10000 && Importado == 'S')
             {
                 _vlImposto = Preco * 0.3;
+            }
+            else
+            {
+                throw new DomainException("Não existe este tipo de importado.");
             }
             return _vlImposto;
         }
