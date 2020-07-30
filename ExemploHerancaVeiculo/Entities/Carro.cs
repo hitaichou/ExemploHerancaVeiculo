@@ -5,27 +5,65 @@ namespace ExemploHerancaVeiculo.Entities
     {
         public string Tipo { get; set; }
         private double _vlImposto;
+        private double _vlPreco;
 
 
-        public Carro(string nome, string cor, string fabricante, int ano, char importado, double preco, string tipo imposto)
-            : base(nome, cor, fabricante, ano, importado, preco)
+        public Carro(string modelo, string cor, string fabricante, int ano, char importado, double preco/*, string tipo*/)
+            : base(modelo, cor, fabricante, ano, importado, preco)
         {
-            Tipo = tipo;
+            //Tipo = tipo;            
+        }
+
+        public override double CalculaPreco()
+        {
+            if(Preco < 10000 && Importado == 'N')
+            {
+                _vlPreco = Preco + (Preco * 0.1);
+            }
+            else if (Preco < 10000 && Importado == 'S')
+            {
+                _vlPreco = Preco + (Preco * 0.15);
+            }
+            else if(Preco >= 10000 && Preco < 40000 && Importado == 'N')
+            {
+                _vlPreco = Preco + (Preco * 0.2);
+            }
+            else if (Preco >= 10000 && Preco < 40000 && Importado == 'S')
+            {
+                _vlPreco = Preco + (Preco * 0.25);
+            }
+            else if (Preco >= 40000 && Importado == 'N')
+            {
+                _vlPreco = Preco + (Preco * 0.30);
+            }
+            else
+            {
+                _vlPreco = Preco + (Preco * 0.35);
+            }
+            return _vlPreco;
         }
 
         public override double CalculaImposto()
         {
-            if(Preco < 10000)
+            if (Preco < 10000 && Importado == 'N')
             {
                 _vlImposto = Preco * 0.1;
             }
-            else if(Preco >= 10000 && Preco < 40000)
+            else if (Preco < 10000 && Importado == 'S')
+            {
+                _vlImposto = Preco * 0.15;
+            }
+            else if (Preco >= 10000 && Preco < 40000 && Importado == 'N')
             {
                 _vlImposto = Preco * 0.2;
             }
-            else if (Preco >= 40000 && Importado == 'N')
+            else if (Preco >= 10000 && Preco < 40000 && Importado == 'S')
             {
                 _vlImposto = Preco * 0.25;
+            }
+            else if (Preco >= 40000 && Importado == 'N')
+            {
+                _vlImposto = Preco * 0.30;
             }
             else
             {
