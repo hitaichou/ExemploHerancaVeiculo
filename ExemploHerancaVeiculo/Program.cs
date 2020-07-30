@@ -98,14 +98,3 @@ namespace ExemploHerancaVeiculo
     }
 }
 
-
-/*
- 
-     public string Cor { get; set; }
-        public string Fabricante { get; set; }
-        public int Ano { get; set; }
-        public double Preco { get; set; }
-        public char Importado { get; set; }
-        public string Nome { get; set; }
-     
-     */
